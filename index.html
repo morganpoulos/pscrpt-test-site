@@ -1,794 +1,652 @@
 <!--
-Primary Angle: Clinically informed 12‑hour comfort shoes that replace “4‑hour” sneakers so nurses and long‑shift workers can end the day without limping, backed by a 45‑day trial.
-Style: Rounded DTC • Single-button Sticky CTA • No Top Nav
+Primary Angle: Heart Health as the anchor — 10K steps goal — ComfortWear as the enabler
+Style: Clean Educational Listicle • DTC Best Practices • Single Sticky CTA
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ComfortWear Ortho Stretch Cushion Shoes — 12‑Hour Shift Comfort</title>
+  <title>Your 10K Steps Guide for Heart Health — ComfortWear</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
   <style>
     :root{
-      --page:#ffffff; /* Page background */
-      --brand:#1d376c; /* Primary / Brand */
-      --accent:#007aff; /* Accent blue */
-      --paper:#f5f5f5; /* Soft paper */
-      --cloud:#f5f5f5; /* Neutral cloud */
-      --ink:#162950; /* Primary text */
-      --ink-muted:#122344; /* Secondary text */
-      --star:#ffd700; /* Star / highlight */
-      --border:#e4e4e4; /* Border */
+      --page:#ffffff;
+      --brand:#1d376c;
+      --brand-dark:#102143;
+      --accent:#007aff;
+      --paper:#f8fafc;
+      --ink:#162950;
+      --ink-muted:#475569;
+      --ink-light:#64748b;
+      --star:#fbbf24;
+      --border:#e2e8f0;
+      --heart:#dc2626;
+      --success:#059669;
+      --cloud:#f1f5f9;
     }
-    html,body{background:var(--page); color:var(--ink);}
+    html{scroll-behavior:smooth;}
     body{
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      padding:1rem 1rem 0 1rem;
-    }
-    .page-wrapper{
-      max-width:1200px;
-      margin:0 auto;
-      border:2px solid rgba(15,23,42,.08);
-      border-radius:1rem 1rem 0 0;
       background:var(--page);
-      overflow:hidden;
-    }
-    .sticky-cta-container{
-      background:#FFFFFF;
-      border-top:1px solid rgba(15,23,42,.2);
-      padding-top:1rem;
-      padding-bottom:1rem;
-    }
-    .sticky-cta-wrapper{
-      background:#FFFFFF;
-      max-width:1200px;
-      margin:0 auto;
-    }
-    .card{
-      background:var(--paper);
       color:var(--ink);
+      line-height:1.6;
     }
-    .muted{
-      color:var(--ink-muted);
+    .wrap{max-width:680px;margin:0 auto;padding:0 1.25rem;}
+    .section{padding:2.5rem 0;}
+    .section-sm{padding:1.5rem 0;}
+
+    /* Typography */
+    h1{font-size:2.25rem;line-height:1.15;font-weight:800;letter-spacing:-.03em;}
+    h2{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;}
+    h3{font-size:1.125rem;font-weight:700;}
+    @media(min-width:640px){
+      h1{font-size:2.75rem;}
+      h2{font-size:1.75rem;}
     }
-    .shadow-soft{box-shadow:0 8px 24px rgba(15,23,42,.10);}
-    .shadow-soft-2{box-shadow:0 14px 34px rgba(15,23,42,.16);}
-    .ring-accent{box-shadow:0 0 0 3px rgba(0,122,255,.18);}
+
+    /* Buttons */
     .btn{
-      background:linear-gradient(180deg, var(--brand) 0%, #102143 100%);
-      color:#ffffff;
-      border-radius:9999px;
-      padding:1.05rem 1.35rem;
-      font-weight:800;
-      letter-spacing:.02em;
-      text-transform:uppercase;
-      font-size:.85rem;
-      box-shadow:0 14px 30px rgba(22,41,80,.45), inset 0 -2px 0 rgba(0,0,0,.06);
-      transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
-      text-align:center;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:var(--brand);color:#fff;
+      padding:1rem 2rem;border-radius:9999px;
+      font-weight:700;font-size:.9rem;
+      text-transform:uppercase;letter-spacing:.03em;
+      box-shadow:0 8px 24px rgba(29,55,108,.3);
+      transition:all .15s ease;
     }
-    .btn:hover{
-      filter:brightness(0.97);
-      transform:translateY(-1px);
-      box-shadow:0 16px 34px rgba(22,41,80,.5), inset 0 -2px 0 rgba(0,0,0,.06);
-    }
-    .btn:active{
-      transform:translateY(0);
-      box-shadow:0 10px 22px rgba(22,41,80,.38);
-    }
-    .btn-ghost{
-      background:#ffffff;
-      color:var(--brand);
-      border-radius:9999px;
-      padding:.95rem 1.2rem;
-      font-weight:800;
-      letter-spacing:.02em;
-      text-transform:uppercase;
-      font-size:.8rem;
-      box-shadow:0 10px 24px rgba(15,23,42,.08);
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
-      border:1px solid rgba(15,23,42,.08);
-      text-align:center;
-    }
-    .btn-ghost:hover{
-      transform:translateY(-1px);
-      box-shadow:0 12px 28px rgba(15,23,42,.12);
-      background:#f9fafb;
-    }
-    .chip{
-      background:rgba(29,55,108,.06);
-      border:1px solid rgba(29,55,108,.35);
-      color:var(--brand);
-    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(29,55,108,.35);}
+    .btn-soft{transition:opacity .15s ease;}
+    .btn-soft:hover{opacity:.7;}
+
+    /* Cards */
+    .card{background:var(--paper);border-radius:1rem;border:1px solid var(--border);}
+    .card-white{background:#fff;border-radius:1rem;border:1px solid var(--border);}
+    .shadow-soft{box-shadow:0 4px 16px rgba(15,23,42,.06);}
+
+    /* Badges */
     .badge{
-      background:var(--cloud);
+      display:inline-flex;align-items:center;gap:.375rem;
+      background:var(--paper);border:1px solid var(--border);
+      padding:.5rem .875rem;border-radius:9999px;
+      font-size:.8rem;font-weight:600;color:var(--ink-muted);
+    }
+    .badge-heart{
+      background:rgba(220,38,38,.06);border-color:rgba(220,38,38,.15);
+      color:var(--heart);
+    }
+
+    /* Stats */
+    .stat{text-align:center;padding:1.25rem;}
+    .stat-number{font-size:2rem;font-weight:800;color:var(--brand);}
+    .stat-label{font-size:.75rem;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.05em;margin-top:.25rem;}
+
+    /* List Items */
+    .list-item{
+      display:flex;gap:1rem;padding:1.25rem;
+      background:#fff;border-radius:.75rem;border:1px solid var(--border);
+    }
+    .list-number{
+      flex-shrink:0;width:2rem;height:2rem;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--brand);color:#fff;
+      border-radius:9999px;font-weight:700;font-size:.875rem;
+    }
+
+    /* Testimonial */
+    .testimonial{
+      background:var(--paper);border-radius:1rem;padding:1.5rem;
+      border-left:4px solid var(--brand);
+    }
+    .stars{color:var(--star);font-size:1rem;letter-spacing:.1em;}
+
+    /* Sticky CTA */
+    .sticky-bar{
+      position:fixed;bottom:0;left:0;right:0;z-index:50;
+      background:#fff;border-top:1px solid var(--border);
+      padding:1rem;
+      box-shadow:0 -4px 20px rgba(0,0,0,.08);
+    }
+
+    /* Feature Grid */
+    .feature{display:flex;gap:.75rem;align-items:flex-start;}
+    .feature-icon{font-size:1.25rem;flex-shrink:0;margin-top:.125rem;}
+
+    /* Heart Pulse Animation */
+    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+    .heart-pulse{animation:pulse 2s ease-in-out infinite;}
+
+    /* PDP Card */
+    .pdp-card{
+      background:#fff;
+      border:2px solid var(--border);
+      border-radius:1.25rem;
+      overflow:hidden;
+      box-shadow:0 8px 32px rgba(15,23,42,.08);
+    }
+
+    /* Comparison Table */
+    .comparison-layout{
+      display:grid;
+      gap:2rem;
+    }
+    @media(min-width:768px){
+      .comparison-layout{
+        grid-template-columns:1fr 1.5fr;
+        align-items:center;
+      }
+    }
+    .comparison-intro h2{color:var(--brand);}
+    .comparison-table{
+      background:#fff;
+      border-radius:1rem;
+      overflow:hidden;
+      box-shadow:0 4px 20px rgba(15,23,42,.08);
+      border:1px solid var(--border);
+    }
+    .comparison-header{
+      display:grid;
+      grid-template-columns:120px 1fr 1fr;
+      font-weight:700;
+      font-size:.85rem;
+    }
+    .comparison-header .comparison-theirs{
+      background:var(--paper);
+      color:var(--ink-muted);
+      padding:1.25rem 1rem;
+      text-align:center;
+    }
+    .comparison-header .comparison-ours{
+      background:var(--brand);
+      color:#fff;
+      padding:1.25rem 1rem;
+      text-align:center;
+      border-radius:0 .75rem 0 0;
+    }
+    .comparison-header .comparison-feature{
+      padding:1.25rem 1rem;
+    }
+    .comparison-row{
+      display:grid;
+      grid-template-columns:120px 1fr 1fr;
+      border-top:1px solid var(--border);
+      font-size:.85rem;
+      min-height:72px;
+    }
+    .comparison-row .comparison-feature{
+      padding:1rem;
+      font-weight:600;
       color:var(--ink);
+      display:flex;
+      align-items:center;
+      background:#fff;
     }
-    .star{color:var(--star);}
-    a img{border-radius:1rem;}
-    .soft-card-light{
-      background:#F5F7FB;
-      border-radius:1.5rem;
-      box-shadow:0 10px 30px rgba(15,23,42,.08);
+    .comparison-row .comparison-theirs{
+      padding:1rem;
+      background:var(--paper);
+      color:var(--ink-muted);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      flex-direction:column;
+      gap:.375rem;
     }
-    .btn-radius{
-      border-radius:9999px;
+    .comparison-row .comparison-ours{
+      padding:1rem;
+      background:var(--brand);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      flex-direction:column;
+      gap:.375rem;
     }
-    .focus-ring:focus-visible{
-      outline:2px solid #007AFF;
-      outline-offset:3px;
+    .comparison-row:last-child .comparison-ours{
+      border-radius:0 0 .75rem 0;
     }
-    .rounded-hero{
-      border-radius:1.5rem;
+    .icon-x{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:1.5rem;
+      height:1.5rem;
+      background:#e5e7eb;
+      color:#6b7280;
+      border-radius:50%;
+      font-size:.75rem;
+      font-weight:700;
     }
-    ::selection{
-      background:var(--accent);
-      color:#ffffff;
+    .icon-check{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:1.5rem;
+      height:1.5rem;
+      background:#84cc16;
+      color:#fff;
+      border-radius:50%;
+      font-size:.75rem;
+      font-weight:700;
+    }
+    @media(max-width:639px){
+      .comparison-header,
+      .comparison-row{
+        grid-template-columns:90px 1fr 1fr;
+        min-height:64px;
+      }
+      .comparison-row .comparison-feature{
+        font-size:.75rem;
+        padding:.75rem .5rem;
+      }
+      .comparison-row .comparison-theirs,
+      .comparison-row .comparison-ours{
+        font-size:.7rem;
+        padding:.75rem .5rem;
+      }
     }
   </style>
-  <script src="https://psn-shop.vercel.app/analytics-v1.js" defer></script>
 </head>
-<body class="font-sans antialiased">
+<body>
 
-<div class="page-wrapper">
-<main class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-
-  <!-- Hero -->
-  <section
-    aria-label="ComfortWear Ortho Stretch Cushion Shoes"
-    class="pt-8 pb-6"
-    data-psn-event="Brand Viewed"
-    data-psn-trigger="view"
-    data-psn-shop-id="335774">
-    <div class="space-y-4 text-center">
-
-      <h1 class="text-[2rem] leading-[1.15] md:text-[2.4rem] font-extrabold tracking-[-0.035em] my-3">
-        Shoes That Last Your Whole Shift—Not Just the First 4 Hours
-      </h1>
-
-      <p class="muted text-base sm:text-lg max-w-2xl mx-auto">
-        Deep heel cushioning, real arch support, and a wide StretchFit toe box—built so nurses, retail workers, and busy women can move 12+ hours with less pain. Feel the difference in 45 days or get 100% of your money back.
-      </p>
-
-      <p class="muted text-sm sm:text-base max-w-2xl mx-auto">
-        You’re not just “uncomfortable.” You’re planning your life around pain: collapsing on the couch after a shift, limping to your car, saying no to walks, errands, or grandkids because your feet quit before you do.
-      </p>
-      <p class="muted text-sm sm:text-base max-w-2xl mx-auto">
-        ComfortWear’s Ortho Stretch Cushion Shoes are designed as a full 12‑Hour Shift System—not another “comfy” sneaker that taps out by lunchtime.
-      </p>
-
-      <div class="mt-2 text-sm sm:text-base text-gray-700 max-w-md mx-auto space-y-1 text-left">
-        <p class="font-semibold text-[var(--ink)]">In plain terms, you get:</p>
-        <ul class="mt-1 space-y-1 text-[15px] text-[var(--ink-muted)]">
-          <li>• All‑day heel cushioning that doesn’t flatten by hour 4</li>
-          <li>• Built‑in arch support that targets plantar fasciitis and flat feet</li>
-          <li>• A wide, stretch upper that makes room for bunions, hammertoes, and swelling</li>
-          <li>• A slip‑resistant sole ready for hospital, retail, and restaurant floors</li>
-        </ul>
-      </div>
-
-      <div class="flex flex-wrap items-center justify-center gap-2 mt-4">
-        <span class="badge px-3 py-1 rounded-full text-xs font-semibold">
-          Rated 4.8 ★★★★★ by 1,400+ customers
-        </span>
-        <span class="badge px-3 py-1 rounded-full text-xs font-semibold">
-          Trusted by 500,000+ long‑shift workers
-        </span>
-      </div>
-
-      <div class="mt-5 text-center">
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn inline-flex items-center justify-center text-sm sm:text-base px-8"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          Get 40% Off + 45-Day Trial
-        </a>
-      </div>
+<!-- Hero: Heart Health Hook -->
+<header class="section" data-track-view="hero" data-ps-shop-id="335774">
+  <div class="wrap">
+    <div class="badge-heart badge mb-4">
+      <span class="heart-pulse">❤️</span>
+      <span>February is American Heart Month</span>
     </div>
+    
+    <h1 style="font-size:1.75rem;line-height:1.2;font-weight:800;">Walking Is One of the Best Things You Can Do for Your Heart</h1>
+    
+    <p class="mt-4" style="color:var(--ink-muted);font-size:1rem;line-height:1.6;">
+      Walking just 30 minutes a day can lower blood pressure, boost circulation, and strengthen your heart. It's one of the simplest things you can do for your long-term health—and it doesn't require a gym membership.
+    </p>
+
+    <p class="mt-3" style="color:var(--ink-muted);font-size:1rem;line-height:1.6;">
+      The challenge? <strong style="color:var(--ink);">Staying consistent.</strong> That's where the right support makes all the difference.
+    </p>
 
     <div class="mt-6">
       <a
-        href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-        aria-label="Shop ComfortWear Ortho Stretch Cushion Shoes"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-psn-event="Brand Clicked"
-        data-psn-shop-id="335774">
-        <img
-          src="https://comfortorthowear.com/cdn/shop/products/ortho-stretch-cushion-shoes-midnight-black-963537_800x800.jpg?v=1746125101"
-          alt="Ortho Stretch Cushion Shoes in Midnight Black"
-          class="w-full max-w-3xl mx-auto shadow-soft-2 rounded-hero" />
+        href="#product"
+        class="btn-soft"
+        style="display:inline-flex;align-items:center;gap:.5rem;color:var(--brand);font-weight:600;font-size:.9rem;">
+        Find Your Walking Shoe <span style="font-size:1.1em;">→</span>
       </a>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- Offer: What you're actually getting -->
-  <section
-    aria-label="What you’re getting with ComfortWear Ortho Stretch Cushion Shoes"
-    class="py-4"
-    data-psn-event="Funnel Stage Reached"
-    data-psn-trigger="view"
-    data-psn-funnel-stage-level="2"
-    data-psn-shop-id="335774">
-    <div class="card rounded-2xl p-6 sm:p-8 shadow-soft">
-      <div class="flex items-center justify-between flex-wrap gap-3">
-        <h2 class="text-2xl sm:text-3xl font-extrabold">
-          ComfortWear Ortho Stretch Cushion Shoes
-        </h2>
-        <div class="badge px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
-          Christmas Sale • 40% OFF + 45‑Day Trial
-        </div>
+<!-- Why Walking Works -->
+<section class="section-sm" data-track-view="why-walking-works" style="background:var(--paper);">
+  <div class="wrap">
+    <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:1rem;">How Walking Supports Your Heart</h2>
+    
+    <div class="space-y-3">
+      <div class="p-4 bg-white rounded-lg" style="border:1px solid var(--border);">
+        <strong>Lowers blood pressure</strong>
+        <p class="text-sm mt-1" style="color:var(--ink-muted);">Regular walking helps your heart pump more efficiently.</p>
       </div>
+      <div class="p-4 bg-white rounded-lg" style="border:1px solid var(--border);">
+        <strong>Improves circulation</strong>
+        <p class="text-sm mt-1" style="color:var(--ink-muted);">Movement keeps blood flowing and prevents dangerous buildup.</p>
+      </div>
+      <div class="p-4 bg-white rounded-lg" style="border:1px solid var(--border);">
+        <strong>Reduces stress</strong>
+        <p class="text-sm mt-1" style="color:var(--ink-muted);">Walking releases endorphins and lowers cortisol—good for your heart and mood.</p>
+      </div>
+    </div>
 
-      <p class="mt-4 text-sm sm:text-base text-[var(--ink-muted)]">
-        These aren’t “extra soft sneakers.” They’re a clinically informed, real‑shift‑tested system for 12‑hour days on hard floors. Instead of stacking inserts into shoes that were never designed for them, you get support that’s built in from the ground up—so your feet, knees, and back finally get to relax.
+    <div class="mt-4 p-3 text-center text-sm" style="color:var(--ink-muted);background:#fff;border-radius:.5rem;border:1px solid var(--border);">
+      <strong style="color:var(--brand);">The AHA recommends</strong> 150 minutes of walking per week—that's just 30 min/day, 5 days a week.
+    </div>
+  </div>
+</section>
+
+<!-- The Problem -->
+<section class="section" data-track-view="the-problem">
+  <div class="wrap">
+    <h2 style="font-size:1.25rem;font-weight:700;">But Here's the Problem</h2>
+    
+    <p class="mt-3" style="color:var(--ink-muted);">
+      Most people know walking is good for them. But discomfort makes it hard to stay consistent.
+    </p>
+
+    <div class="mt-4 p-4" style="background:rgba(220,38,38,.04);border-radius:.75rem;border-left:4px solid var(--heart);">
+      <p style="color:var(--ink);">
+        Sore feet by step 3,000. Aching knees by step 5,000. By the time most shoes give up, you're only halfway to your goal—and dreading tomorrow's walk.
       </p>
+    </div>
 
-      <div class="mt-4 bg-white rounded-xl p-4 border-2 border-[var(--brand)]">
-        <p class="text-sm font-semibold text-[var(--brand)] mb-1">
-          Christmas Sale: 40% OFF + Free Shipping
+    <ul class="mt-4 space-y-2 text-sm" style="color:var(--ink-muted);">
+      <li class="flex items-center gap-2">
+        <span style="color:var(--heart);">✗</span>
+        <span>Most sneakers flatten after 4,000 steps</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <span style="color:var(--heart);">✗</span>
+        <span>Generic insoles don't support your arch</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <span style="color:var(--heart);">✗</span>
+        <span>Tight toe boxes create pressure points</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PDP Section: The Solution -->
+<section class="section" id="product" data-track-view="product" style="background:var(--paper);">
+  <div class="wrap">
+    <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:1rem;">The Solution: Shoes Built for Your 10K Goal</h2>
+    
+    <div class="card-white shadow-soft overflow-hidden" style="border-radius:1.25rem;">
+      <!-- Product Image -->
+      <a
+        href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes?utm_source=psplit&utm_medium=landing_page&utm_campaign=heart_health_month"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ps-event="Brand Clicked"
+        data-ps-shop-id="335774">
+        <img
+          src="https://comfortorthowear.com/cdn/shop/products/ortho-stretch-cushion-shoes-midnight-black-652688_800x800.jpg?v=1699969822"
+          alt="ComfortWear Ortho Stretch Cushion Shoes"
+          class="w-full" />
+      </a>
+      
+      <!-- Product Info -->
+      <div class="p-5 sm:p-6">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="stars">★★★★★</span>
+          <span class="text-sm" style="color:var(--ink-muted);">4.8 (1,400+ reviews)</span>
+        </div>
+        
+        <h2 class="text-xl sm:text-2xl">Ortho Stretch Cushion Shoes</h2>
+        <p class="text-sm mt-1" style="color:var(--ink-muted);">by ComfortWear</p>
+        
+        <p class="mt-3" style="color:var(--ink-muted);">
+          Deep heel cushioning that lasts all day. Real arch support that matches your foot. A wide toe box that doesn't squeeze. Everything you need to hit your step goal—comfortably.
         </p>
-        <p class="text-sm text-[var(--ink-muted)]">
-          <strong>40% OFF sitewide</strong> + free shipping over $50. Try them on real shifts for 45 days. If you don’t feel the difference, send them back for <strong>100% of your money back</strong>.
-        </p>
-      </div>
 
-      <div class="mt-5 grid gap-4 sm:grid-cols-2">
-        <div class="bg-white rounded-2xl p-5 shadow-sm">
-          <h3 class="text-base font-extrabold mb-2">What they’re for</h3>
-          <ul class="space-y-2 text-[15px] text-[var(--ink-muted)]">
-            <li>• Getting through 10–12+ hour shifts without limping to your car</li>
-            <li>• Reducing heel, arch, and back pain from plantar fasciitis or flat feet</li>
-            <li>• Giving bunions, hammertoes, and swollen feet room to breathe</li>
-            <li>• Turning errands, travel, and walks back into something you look forward to</li>
-          </ul>
+        <!-- Features -->
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <div class="flex items-center gap-2 text-sm">
+            <span style="color:var(--success);">✓</span>
+            <span>Deep Heel Cushioning</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <span style="color:var(--success);">✓</span>
+            <span>Built-In Arch Support</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <span style="color:var(--success);">✓</span>
+            <span>StretchFit Wide Toe Box</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <span style="color:var(--success);">✓</span>
+            <span>Slip-Resistant Sole</span>
+          </div>
         </div>
-        <div class="bg-white rounded-2xl p-5 shadow-sm">
-          <h3 class="text-base font-extrabold mb-2">Why they earn a spot by your door</h3>
-          <ul class="space-y-2 text-[15px] text-[var(--ink-muted)]">
-            <li>• Deep ORTHO‑WEAR heel cushioning that doesn’t give up halfway through your day</li>
-            <li>• Anatomical arch support that matches real foot curves</li>
-            <li>• Wide StretchFit knit upper that adapts to your foot instead of fighting it</li>
-            <li>• Slip‑resistant outsole chosen for tile, concrete, and slick floors</li>
-          </ul>
+
+        <!-- Trust Badges -->
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="badge text-xs">🚚 Free Shipping $50+</span>
+          <span class="badge text-xs">↩️ 45-Day Trial</span>
+          <span class="badge text-xs">✅ 100% Money Back</span>
         </div>
-      </div>
 
-      <div class="mt-5 bg-white rounded-2xl p-5">
-        <h3 class="text-base font-extrabold mb-2">Benefits at a glance</h3>
-        <ul class="text-[15px] text-[var(--ink-muted)] space-y-2">
-          <li>• 12‑hour comfort instead of a 4‑hour “honeymoon phase”</li>
-          <li>• Less end‑of‑day limping, more energy left for your family and life</li>
-          <li>• One shoe that works for work, errands, and everyday walks</li>
-          <li>• 45‑day 100% money‑back guarantee</li>
-        </ul>
-      </div>
-
-      <div class="mt-6 text-center">
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn inline-flex items-center justify-center text-sm sm:text-base py-4 px-8"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          Start My 45-Day Trial
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- The real problem: 4-hour shoes in a 12-hour life -->
-  <section aria-label="Why your current shoes still leave you in pain" class="py-4">
-    <div class="card rounded-3xl p-6 sm:p-8 shadow-soft">
-      <h2 class="text-2xl font-extrabold">The real problem: 4‑hour shoes in a 12‑hour life</h2>
-      <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
-        If this sounds familiar, ComfortWear was built for you:
-      </p>
-      <ul class="mt-3 space-y-2 text-sm sm:text-[15px] text-[var(--ink-muted)]">
-        <li>• Your “comfort” shoes feel great in the store, okay for a few hours, and miserable by hour 8</li>
-        <li>• You’ve tried cushiony sneakers, gel inserts, and expensive orthotics—but pain always comes back</li>
-        <li>• By the end of your shift, your heels, knees, or lower back are on fire</li>
-      </ul>
-      <p class="mt-4 text-sm sm:text-base text-[var(--ink-muted)]">
-        It’s not that nothing works. It’s that most shoes were never designed for your reality. Your body isn’t the problem. Your shoes are. You’ve been wearing 4‑hour shoes in a 12‑hour life.
-      </p>
-
-      <h3 class="mt-5 text-base sm:text-lg font-extrabold">
-        Why most “comfort” shoes fail after hour 4–6
-      </h3>
-      <ul class="mt-3 space-y-2 text-sm sm:text-[15px] text-[var(--ink-muted)]">
-        <li>
-          <span class="font-semibold">• The 4‑Hour Comfort Ceiling</span> — Standard foam and flat insoles compress quickly. What feels soft at first stops supporting your arch, your heel takes the hit, and pain creeps back in.
-        </li>
-        <li>
-          <span class="font-semibold">• Narrow, fashion‑first footprints</span> — Tight, shallow toe boxes squeeze bunions, hammertoes, and swollen feet right when you’re most tired.
-        </li>
-        <li>
-          <span class="font-semibold">• Add‑on, not built‑in support</span> — Stacking generic inserts into shoes that weren’t built for them creates new pressure points and unstable alignment.
-        </li>
-      </ul>
-
-      <div class="mt-5 text-center">
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn inline-flex items-center justify-center text-sm sm:text-base px-8"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          Upgrade My Shift Comfort
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- How the 12-hour shift system works -->
-  <section aria-label="How the 12‑Hour Shift System works" class="py-4">
-    <div class="card rounded-3xl p-6 sm:p-8 shadow-soft">
-      <h2 class="text-2xl font-extrabold">How the 12‑Hour Shift System works</h2>
-      <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
-        ComfortWear is different because every part of the shoe is designed to work together for 12+ hours of relief—not just the first few.
-      </p>
-
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <article class="bg-white rounded-2xl p-4 shadow-sm">
-          <h3 class="font-bold text-sm sm:text-base">Deep ORTHO‑WEAR heel cushioning</h3>
-          <p class="mt-1 text-xs sm:text-sm text-[var(--ink-muted)]">
-            Absorbs shock and cradles your heel in a deep, cupped heel bed so cushioning stays under your foot instead of flattening out by lunchtime. That helps take strain off your knees and lower back.
-          </p>
-        </article>
-        <article class="bg-white rounded-2xl p-4 shadow-sm">
-          <h3 class="font-bold text-sm sm:text-base">Anatomical arch support</h3>
-          <p class="mt-1 text-xs sm:text-sm text-[var(--ink-muted)]">
-            Built‑in support that follows the curve of your foot to help reduce plantar fasciitis flare‑ups and that stabbing “first step” morning pain—without stiff, bulky orthotics.
-          </p>
-        </article>
-        <article class="bg-white rounded-2xl p-4 shadow-sm">
-          <h3 class="font-bold text-sm sm:text-base">StretchFit wide toe box</h3>
-          <p class="mt-1 text-xs sm:text-sm text-[var(--ink-muted)]">
-            A roomy, stretch‑knit upper that expands where you need it most—bunions, hammertoes, and daily swelling—so the shoe gently conforms to you.
-          </p>
-        </article>
-        <article class="bg-white rounded-2xl p-4 shadow-sm">
-          <h3 class="font-bold text-sm sm:text-base">Slip‑resistant, long‑shift outsole</h3>
-          <p class="mt-1 text-xs sm:text-sm text-[var(--ink-muted)]">
-            Tread chosen for hospital, retail, restaurant, and concrete floors so you’re not tense and bracing all day. More confidence with every step.
-          </p>
-        </article>
-        <article class="bg-white rounded-2xl p-4 shadow-sm">
-          <h3 class="font-bold text-sm sm:text-base">Clinically informed + real‑shift tested</h3>
-          <p class="mt-1 text-xs sm:text-sm text-[var(--ink-muted)]">
-            Worn by 500,000+ nurses and long‑shift workers who stand or walk 10–12+ hours at a time. Designed for continuous wear—not just quick errands.
-          </p>
-        </article>
-      </div>
-
-      <div class="mt-5 text-center">
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn inline-flex items-center justify-center text-sm sm:text-base px-8"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          End My Day Without Limping
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why this actually fixes the problem -->
-  <section aria-label="Why ComfortWear actually fixes the problem" class="py-4">
-    <div class="card rounded-3xl p-6 sm:p-8 shadow-soft">
-      <h2 class="text-2xl font-extrabold">Why this actually fixes the problem (instead of patching it)</h2>
-      <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
-        You’re not looking for another pair of “comfy” shoes to add to the lineup. You’re looking for a way out of the cycle: new shoes, new inserts, same pain.
-      </p>
-      <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
-        ComfortWear works differently because it:
-      </p>
-      <ul class="mt-3 space-y-2 text-sm sm:text-[15px] text-[var(--ink-muted)]">
-        <li>• Replaces your patchwork setup with one integrated system: heel cushioning + arch support + StretchFit toe box + slip‑resistant sole</li>
-        <li>• Keeps its support past hour 4, so the last two hours of your shift don’t undo your whole day</li>
-        <li>• Supports your whole body, not just your feet—less strain on knees, hips, and lower back</li>
-      </ul>
-      <p class="mt-4 text-sm sm:text-base text-[var(--ink-muted)]">
-        Emotionally, that means finishing a 12‑hour shift and realizing you’re not limping, saying yes to grandkids, walks, or dinner after work instead of collapsing on the couch, and not dreading tomorrow’s shift because of today’s pain.
-      </p>
-      <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
-        You’ve done your part. Your shoes should finally do theirs. Backed by a 45‑day 100% money‑back guarantee, you can test ComfortWear on your real life, real floors, and real shifts—risk‑free.
-      </p>
-
-      <div class="mt-5 text-center">
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn inline-flex items-center justify-center text-sm sm:text-base px-8"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          Start My 45-Day Trial
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Urgency: Christmas Sale -->
-  <section aria-label="Christmas Sale: Turn your next shift into your first pain‑light day" class="py-2">
-    <div
-      class="rounded-2xl p-4 sm:p-5 shadow-soft-2"
-      style="background:linear-gradient(135deg, rgba(218,47,12,.16), rgba(0,122,255,.16))">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div class="text-left w-full">
-          <p class="text-sm tracking-wide uppercase font-extrabold text-[var(--brand)]">
-            Christmas Sale: Limited Pairs
-          </p>
-          <h3 class="text-lg sm:text-xl font-extrabold text-[var(--ink)]">
-            Turn your next shift into your first pain‑light day
-          </h3>
-          <p class="text-sm text-[var(--ink-muted)] mt-1">
-            Right now, you can upgrade your entire day with <strong>40% OFF ComfortWear Ortho Stretch Cushion Shoes</strong>, free shipping on orders over $50, and a 45‑day test drive on real 10–12+ hour days.
-          </p>
-          <p class="text-sm text-[var(--ink-muted)] mt-1">
-            Only a limited number of pairs are available in Midnight Black. Once your size is gone, it’s gone. You can even use HSA/FSA dollars on shoes that finally feel like a medical upgrade.
-          </p>
+        <!-- CTA -->
+        <div class="mt-5">
+          <a
+            href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes?utm_source=psplit&utm_medium=landing_page&utm_campaign=heart_health_month"
+            class="btn w-full"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ps-event="Brand Clicked"
+            data-ps-shop-id="335774">
+            Shop Now
+          </a>
         </div>
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn inline-flex items-center justify-center whitespace-nowrap px-6"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          Get 40% Off + 45-Day Trial
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sticky CTA -->
-  <div class="sticky-cta-container fixed bottom-0 inset-x-0 z-50">
-    <div class="sticky-cta-wrapper">
-      <div class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn whitespace-nowrap px-6 py-4 text-sm sm:text-base font-extrabold"
-          style="background-color:#1d376c;color:#ffffff;box-shadow:0 8px 24px rgba(22,41,80,.35);"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          Get 40% Off + 45-Day Trial
-        </a>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Social proof & credibility -->
-  <section aria-label="Real people getting through real days" class="py-6">
-    <div class="text-center mb-4">
-      <h2 class="text-2xl sm:text-3xl font-extrabold">Real people getting through real days</h2>
-      <p class="muted max-w-2xl mx-auto mt-2 text-sm sm:text-base">
-        Worn by 500,000+ nurses, retail workers, and women who were tired of ending every day in pain.
-      </p>
+<!-- Comparison Section -->
+<section class="section" data-track-view="comparison" style="background:var(--cloud);">
+  <div class="wrap">
+    <div class="comparison-layout">
+      <div class="comparison-intro">
+        <h2 style="font-size:1.5rem;font-weight:800;line-height:1.2;">Feel The Difference With ComfortWear</h2>
+        <p class="mt-3" style="color:var(--ink-muted);line-height:1.6;">
+          Designed to support the natural shape of your feet, ComfortWear combines soft materials, smart cushioning, and features that move with you.
+        </p>
+      </div>
+      
+      <div class="comparison-table">
+        <div class="comparison-header">
+          <div class="comparison-feature"></div>
+          <div class="comparison-theirs">Theirs</div>
+          <div class="comparison-ours">Our Shoes</div>
+        </div>
+        
+        <div class="comparison-row">
+          <div class="comparison-feature">Arch Support</div>
+          <div class="comparison-theirs"><span class="icon-x">✗</span> No Arch Support</div>
+          <div class="comparison-ours"><span class="icon-check">✓</span> Anatomical Arch Support</div>
+        </div>
+        
+        <div class="comparison-row">
+          <div class="comparison-feature">Toe-Box</div>
+          <div class="comparison-theirs"><span class="icon-x">✗</span> Narrow Fit</div>
+          <div class="comparison-ours"><span class="icon-check">✓</span> Wide Toe-Box</div>
+        </div>
+        
+        <div class="comparison-row">
+          <div class="comparison-feature">Heel Cushioning</div>
+          <div class="comparison-theirs"><span class="icon-x">✗</span> Lacks Cushioning</div>
+          <div class="comparison-ours"><span class="icon-check">✓</span> ORTHO-WEAR Cushioning</div>
+        </div>
+        
+        <div class="comparison-row">
+          <div class="comparison-feature">Material</div>
+          <div class="comparison-theirs"><span class="icon-x">✗</span> Rigid Materials</div>
+          <div class="comparison-ours"><span class="icon-check">✓</span> Breathable Stretch-Fit</div>
+        </div>
+        
+        <div class="comparison-row">
+          <div class="comparison-feature">Sole</div>
+          <div class="comparison-theirs"><span class="icon-x">✗</span> No Shock Absorption</div>
+          <div class="comparison-ours"><span class="icon-check">✓</span> Impact-Absorbing Sole</div>
+        </div>
+      </div>
     </div>
-    <div class="grid gap-4 sm:grid-cols-3">
-      <figure class="card rounded-2xl p-4">
-        <div class="flex items-center gap-2">
-          <span class="star text-lg">★★★★★</span>
-          <span class="text-xs font-semibold text-[var(--ink-muted)]">12‑hour nursing shifts</span>
-        </div>
-        <blockquote class="mt-2 text-sm text-[var(--ink-muted)]">
-          “I’m on my feet 12 hours a day, and these are the first shoes that truly help. No more heel pain halfway through my shift, so glad I found them!”
-          <span class="block mt-1 text-xs font-semibold">— Jessica R., Nurse (Verified Buyer)</span>
-        </blockquote>
-      </figure>
-      <figure class="card rounded-2xl p-4">
-        <div class="flex items-center gap-2">
-          <span class="star text-lg">★★★★★</span>
-          <span class="text-xs font-semibold text-[var(--ink-muted)]">Back, knees &amp; long days</span>
-        </div>
-        <blockquote class="mt-2 text-sm text-[var(--ink-muted)]">
-          “These shoes saved my back and knees! I used to limp by the end of my day, now I forget I’m even wearing them. Total game‑changer!”
-          <span class="block mt-1 text-xs font-semibold">— Erina M. (Verified Buyer)</span>
-        </blockquote>
-      </figure>
-      <figure class="card rounded-2xl p-4">
-        <div class="flex items-center gap-2">
-          <span class="star text-lg">★★★★★</span>
-          <span class="text-xs font-semibold text-[var(--ink-muted)]">Slip‑resistant &amp; stable</span>
-        </div>
-        <blockquote class="mt-2 text-sm text-[var(--ink-muted)]">
-          “As a retail worker, I’m constantly on my feet. These are incredibly lightweight but still supportive. The durable, slip resistant sole is the best part!!!”
-          <span class="block mt-1 text-xs font-semibold">— Leah D. (Verified Buyer)</span>
-        </blockquote>
-      </figure>
-    </div>
-
-    <div class="grid gap-4 sm:grid-cols-3 mt-4">
-      <figure class="card rounded-2xl p-4">
-        <div class="flex items-center gap-2">
-          <span class="star text-lg">★★★★★</span>
-          <span class="text-xs font-semibold text-[var(--ink-muted)]">Plantar fasciitis relief</span>
-        </div>
-        <blockquote class="mt-2 text-sm text-[var(--ink-muted)]">
-          “I have flat feet and plantar fasciitis, and these shoes ARE A MIRACLE!! The arch support is strong but not stiff, and the breathable lining keeps my feet dry even during long walks.”
-          <span class="block mt-1 text-xs font-semibold">— Lila B. (Verified Buyer)</span>
-        </blockquote>
-      </figure>
-      <figure class="card rounded-2xl p-4">
-        <div class="flex items-center gap-2">
-          <span class="star text-lg">★★★★★</span>
-          <span class="text-xs font-semibold text-[var(--ink-muted)]">Bunions &amp; hammer toes</span>
-        </div>
-        <blockquote class="mt-2 text-sm text-[var(--ink-muted)]">
-          “My bunions always made shoes painful, but not with these. The knit upper stretches exactly where I need it to. No more pressure points and no more limping by the end of the day.”
-          <span class="block mt-1 text-xs font-semibold">— Alana B. (Verified Buyer)</span>
-        </blockquote>
-      </figure>
-      <figure class="card rounded-2xl p-4">
-        <div class="flex items-center gap-2">
-          <span class="star text-lg">★★★★★</span>
-          <span class="text-xs font-semibold text-[var(--ink-muted)]">Women over 50</span>
-        </div>
-        <blockquote class="mt-2 text-sm text-[var(--ink-muted)]">
-          “The shoe women over 50 rely on for foot pain relief and all‑day comfort. Rated 4.8 ★★★★★ by 1,400+ customers.”
-        </blockquote>
-      </figure>
-    </div>
-
-    <div class="mt-5 text-center">
+    
+    <div class="mt-6 text-center">
       <a
-        href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-        class="btn inline-flex items-center justify-center px-8"
+        href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes?utm_source=psplit&utm_medium=landing_page&utm_campaign=heart_health_month"
+        class="btn"
         target="_blank"
         rel="noopener noreferrer"
-        data-psn-event="Brand Clicked"
-        data-psn-shop-id="335774">
-        Upgrade My Shift Comfort
+        data-ps-event="Brand Clicked"
+        data-ps-shop-id="335774">
+        Try Them Risk-Free
       </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Reasons / benefit grid -->
-  <section aria-label="Reasons to choose ComfortWear" class="py-6">
-    <div class="text-center mb-4">
-      <h2 class="text-2xl sm:text-3xl font-extrabold">7 Reasons to build your day around ComfortWear</h2>
-      <p class="muted max-w-2xl mx-auto mt-2 text-sm sm:text-base">
-        A 12‑hour Shift System that supports how you actually live, not just quick errands.
-      </p>
+<!-- Social Proof -->
+<section class="section" data-track-view="social-proof" style="background:var(--paper);">
+  <div class="wrap">
+    <h2 class="text-center">Real Walkers, Real Results</h2>
+    <p class="text-center mt-2" style="color:var(--ink-muted);">
+      Join 500,000+ people who made walking a habit — comfortably.
+    </p>
+
+    <div class="mt-6 space-y-4">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="mt-2">"These shoes saved my back and knees! I used to limp by the end of my day, now I forget I'm even wearing them. Total game‑changer!"</p>
+        <p class="mt-2 text-sm font-semibold">— Erina M. (Verified Buyer)</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="mt-2">"I have flat feet and plantar fasciitis, and these shoes ARE A MIRACLE!! The arch support is strong but not stiff, and the breathable lining keeps my feet dry even during long walks."</p>
+        <p class="mt-2 text-sm font-semibold">— Lila B. (Verified Buyer)</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="mt-2">"I'm on my feet 12 hours a day, and these are the first shoes that truly help. No more heel pain halfway through my shift, so glad I found them!"</p>
+        <p class="mt-2 text-sm font-semibold">— Jessica R., Nurse (Verified Buyer)</p>
+      </div>
     </div>
-    <div class="grid gap-4 sm:grid-cols-2">
-      <article class="card rounded-2xl p-4">
-        <h3 class="font-bold text-lg">1) It lasts your whole shift</h3>
-        <p class="mt-1 text-sm text-[var(--ink-muted)]">
-          Designed for 10–12+ hour days, not just quick errands. Support that doesn’t disappear after lunch.
-        </p>
-      </article>
-      <article class="card rounded-2xl p-4">
-        <h3 class="font-bold text-lg">2) It replaces, not patches</h3>
-        <p class="mt-1 text-sm text-[var(--ink-muted)]">
-          Built‑in heel cushioning and arch support mean you can stop stacking random inserts and hoping for the best.
-        </p>
-      </article>
-      <article class="card rounded-2xl p-4">
-        <h3 class="font-bold text-lg">3) Relief for common foot issues</h3>
-        <p class="mt-1 text-sm text-[var(--ink-muted)]">
-          Helps people with plantar fasciitis, flat feet, bunions, hammertoes, neuropathy, and swelling move with less pain.
-        </p>
-      </article>
-      <article class="card rounded-2xl p-4">
-        <h3 class="font-bold text-lg">4) It respects your toes</h3>
-        <p class="mt-1 text-sm text-[var(--ink-muted)]">
-          The StretchFit wide toe box gives your forefoot space—so bunions and hammertoes aren’t punished all day.
-        </p>
-      </article>
-      <article class="card rounded-2xl p-4">
-        <h3 class="font-bold text-lg">5) It’s made for real floors</h3>
-        <p class="mt-1 text-sm text-[var(--ink-muted)]">
-          Slip‑resistant outsole grips tile, concrete, and busy restaurant or hospital floors so you feel stable, not tense.
-        </p>
-      </article>
-      <article class="card rounded-2xl p-4">
-        <h3 class="font-bold text-lg">6) It keeps you in the game</h3>
-        <p class="mt-1 text-sm text-[var(--ink-muted)]">
-          Less limping means more energy for overtime, grandkids, travel, and everyday walks you actually enjoy.
-        </p>
-      </article>
-      <article class="card rounded-2xl p-4">
-        <h3 class="font-bold text-lg">7) It’s a risk‑free exit from pain</h3>
-        <p class="mt-1 text-sm text-[var(--ink-muted)]">
-          Wear them for 45 days on real shifts. If you don’t feel the difference, get 100% of your money back.
-        </p>
-      </article>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="section" data-track-view="final-cta" style="background:linear-gradient(135deg, rgba(29,55,108,.04), rgba(220,38,38,.04));">
+  <div class="wrap text-center">
+    <span class="heart-pulse text-4xl">❤️</span>
+    <h2 class="mt-4">Make Every Step Count</h2>
+    <p class="mt-2" style="color:var(--ink-muted);max-width:480px;margin-left:auto;margin-right:auto;">
+      Your heart health journey starts with a single step. Make sure every one of those steps is comfortable.
+    </p>
+
+    <div class="mt-5 flex flex-wrap justify-center gap-3">
+      <span class="badge">✓ 45-Day Trial</span>
+      <span class="badge">✓ Free Shipping $50+</span>
+      <span class="badge">✓ 100% Money Back</span>
     </div>
-    <div class="mt-5 text-center">
+
+    <div class="mt-6" style="max-width:320px;margin-left:auto;margin-right:auto;">
       <a
-        href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-        class="btn inline-flex items-center justify-center px-8"
+        href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes?utm_source=psplit&utm_medium=landing_page&utm_campaign=heart_health_month"
+        class="btn w-full"
         target="_blank"
         rel="noopener noreferrer"
-        data-psn-event="Brand Clicked"
-        data-psn-shop-id="335774">
-        Get 40% Off + 45-Day Trial
+        data-ps-event="Brand Clicked"
+        data-ps-shop-id="335774">
+        Start Walking Comfortably
       </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Product details (PDP-style) -->
-  <section aria-label="Ortho Stretch Cushion Shoes details" class="pt-3 pb-6">
-    <div class="card rounded-2xl p-5 sm:p-6 shadow-soft">
-      <div class="grid gap-6 md:grid-cols-2">
-        <div>
-          <a
-            href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-            aria-label="View Ortho Stretch Cushion Shoes details"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-psn-event="Brand Clicked"
-            data-psn-shop-id="335774">
-            <img
-              src="https://comfortorthowear.com/cdn/shop/products/ortho-stretch-cushion-shoes-midnight-black-652688_800x800.jpg?v=1699969822"
-              alt="Pair of Ortho Stretch Cushion Shoes in Midnight Black"
-              class="w-full h-auto shadow-soft rounded-2xl" />
-          </a>
-        </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <div class="text-[var(--star)] text-xl">★★★★★</div>
-            <div class="text-sm text-[var(--ink-muted)]">Rated 4.8 by 1,400+ customers</div>
-          </div>
-          <h3 class="mt-2 text-2xl font-extrabold">
-            Meet the Ortho Stretch Cushion Shoes from ComfortWear
-          </h3>
-          <p class="mt-2 text-sm sm:text-base text-[var(--ink-muted)]">
-            These are your everyday, every‑shift shoes—built to handle hospital corridors, retail floors, restaurant kitchens, and long days on concrete without giving up before you do.
-          </p>
-          <p class="mt-2 text-sm sm:text-base text-[var(--ink-muted)]">
-            They combine deep ORTHO‑WEAR heel cushioning, targeted arch support, a StretchFit knit upper, and a wide, stable base with a slip‑resistant outsole so your feet, knees, and back can finally relax.
-          </p>
-          <ul class="mt-4 grid gap-2 text-sm">
-            <li class="bg-white rounded-xl px-3 py-2">
-              • Deep ORTHO‑WEAR heel cushioning softens every step and takes pressure off your joints
-            </li>
-            <li class="bg-white rounded-xl px-3 py-2">
-              • Targeted arch support helps reduce plantar fasciitis pain and supports flat feet without feeling rigid
-            </li>
-            <li class="bg-white rounded-xl px-3 py-2">
-              • StretchFit knit upper and wide, stable base give bunions, hammertoes, and swelling room to breathe
-            </li>
-            <li class="bg-white rounded-xl px-3 py-2">
-              • Slip‑resistant outsole grips tile, concrete, and slick surfaces so you’re not bracing with every step
-            </li>
-          </ul>
-          <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
-            Perfect for nurses and healthcare workers, retail, restaurant, and hospitality workers, women over 50 who want pain‑light walks and travel, and anyone exhausted by shoes that feel great at first and awful by day’s end.
-          </p>
-          <div class="mt-5 flex flex-wrap items-center justify-center gap-3 text-center">
-            <a
-              href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-              class="btn inline-flex items-center justify-center px-8"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-psn-event="Brand Clicked"
-              data-psn-shop-id="335774">
-              Start My 45-Day Trial
-            </a>
-            <span
-              class="text-xs px-3 py-1 rounded-full font-semibold"
-              style="background-color:#ffffff;color:#da2f0c;">
-              40% OFF + Free Shipping Over $50
-            </span>
-          </div>
-          <p class="mt-3 text-xs text-[var(--ink-muted)]">
-            Try them during our Christmas Sale at 40% OFF, with free shipping over $50 and a 45‑day 100% money‑back guarantee.
-          </p>
-        </div>
-      </div>
+<!-- FAQ -->
+<section class="section" data-track-view="faq">
+  <div class="wrap">
+    <h2 class="text-center">Questions?</h2>
+    <div class="mt-6 space-y-3">
+      <details class="card-white p-4 shadow-soft">
+        <summary class="font-semibold cursor-pointer">Do these shoes help with foot or heel pain?</summary>
+        <p class="mt-2 text-sm" style="color:var(--ink-muted);">Yes. The deep heel cushioning and built-in arch support are designed to reduce strain on your feet, heels, and joints. Many customers report relief from chronic foot pain within the first few days of wearing them.</p>
+      </details>
+      <details class="card-white p-4 shadow-soft">
+        <summary class="font-semibold cursor-pointer">Can I wear the shoes all day without discomfort?</summary>
+        <p class="mt-2 text-sm" style="color:var(--ink-muted);">Absolutely. These shoes are built for 12+ hour days. The cushioning stays supportive even after thousands of steps, and the breathable stretch-fit material keeps your feet comfortable from morning to night.</p>
+      </details>
+      <details class="card-white p-4 shadow-soft">
+        <summary class="font-semibold cursor-pointer">Are the shoes good for plantar fasciitis or bunions?</summary>
+        <p class="mt-2 text-sm" style="color:var(--ink-muted);">Yes. The anatomical arch support helps with plantar fasciitis, while the wide toe box and stretchy knit upper reduce pressure on bunions. Many customers with these conditions say these are the most comfortable shoes they've ever worn.</p>
+      </details>
+      <details class="card-white p-4 shadow-soft">
+        <summary class="font-semibold cursor-pointer">Do the shoes fit true to size?</summary>
+        <p class="mt-2 text-sm" style="color:var(--ink-muted);">Yes, they fit true to size for most customers. If you're between sizes or prefer extra room, we recommend going up a half size. The stretch-fit material also adapts to your foot shape over time.</p>
+      </details>
+      <details class="card-white p-4 shadow-soft">
+        <summary class="font-semibold cursor-pointer">Are the shoes suitable for wide or swollen feet?</summary>
+        <p class="mt-2 text-sm" style="color:var(--ink-muted);">Yes. The wide toe box and flexible knit upper accommodate wider feet and swelling throughout the day. They're a popular choice for customers who struggle to find comfortable shoes in standard widths.</p>
+      </details>
+      <details class="card-white p-4 shadow-soft">
+        <summary class="font-semibold cursor-pointer">Can I return the shoes if they don't work for me?</summary>
+        <p class="mt-2 text-sm" style="color:var(--ink-muted);">Yes. You have 45 days to try them on your real walks. If you don't feel the difference, return them for a full refund—no questions asked.</p>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Guarantee strip -->
-  <section aria-label="45‑day comfort guarantee" class="pb-6">
-    <div class="soft-card-light p-5 sm:p-6">
-      <h2 class="text-2xl font-extrabold text-[var(--ink)]">
-        Try them for 45 days. Walk away any time.
-      </h2>
-      <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
-        Wear ComfortWear on your real shifts, real walks, and real days. If you don’t feel a noticeable difference in your comfort within 45 days, send them back for 100% of your money back.
-      </p>
-      <p class="mt-2 text-sm sm:text-base text-[var(--ink-muted)]">
-        Free returns and exchanges mean you can test your true size and fit without any risk.
-      </p>
-      <div class="mt-4 text-center">
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn inline-flex items-center justify-center px-8"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          End My Day Without Limping
-        </a>
-      </div>
+<!-- Sticky CTA -->
+<div class="sticky-bar" style="padding-bottom:calc(1rem + env(safe-area-inset-bottom));">
+  <div class="wrap">
+    <a
+      href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes?utm_source=psplit&utm_medium=landing_page&utm_campaign=heart_health_month"
+      class="btn w-full"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-ps-event="Brand Clicked"
+      data-ps-shop-id="335774"
+      style="padding:.875rem 1.5rem;font-size:.85rem;">
+      Shop Now
+    </a>
+    <div class="flex justify-center gap-2 mt-2 text-xs" style="color:var(--ink-muted);">
+      <span>🚚 Free Shipping $50+</span>
+      <span>·</span>
+      <span>↩️ 45-Day Trial</span>
     </div>
-  </section>
-
-  <!-- FAQ -->
-  <section aria-label="Questions about ComfortWear" class="py-6">
-    <div class="card rounded-2xl p-5 sm:p-6 shadow-soft">
-      <h2 class="text-2xl font-extrabold">Questions, answered</h2>
-      <div class="mt-4 grid gap-4 sm:grid-cols-2">
-        <details class="bg-white rounded-2xl p-4">
-          <summary class="font-semibold cursor-pointer text-sm sm:text-base">
-            Will these really last a 12‑hour shift?
-          </summary>
-          <p class="mt-2 text-sm text-[var(--ink-muted)]">
-            ComfortWear was designed as a 12‑Hour Shift System and has been worn by 500,000+ nurses and long‑shift workers. The cushioning and support are built to stay effective past hour 4, not give up halfway through your day.
-          </p>
-        </details>
-        <details class="bg-white rounded-2xl p-4">
-          <summary class="font-semibold cursor-pointer text-sm sm:text-base">
-            Are they good for plantar fasciitis and flat feet?
-          </summary>
-          <p class="mt-2 text-sm text-[var(--ink-muted)]">
-            Yes. Many customers with flat feet and plantar fasciitis report real relief. The anatomical arch support targets that sharp, stabbing pain and helps support your arch all day.
-          </p>
-        </details>
-        <details class="bg-white rounded-2xl p-4">
-          <summary class="font-semibold cursor-pointer text-sm sm:text-base">
-            What if I have bunions, hammertoes, or swelling?
-          </summary>
-          <p class="mt-2 text-sm text-[var(--ink-muted)]">
-            The StretchFit wide toe box and knit upper are designed to adapt to bunions, hammertoes, and swelling, reducing pressure points and friction that make most shoes unbearable by day’s end.
-          </p>
-        </details>
-        <details class="bg-white rounded-2xl p-4">
-          <summary class="font-semibold cursor-pointer text-sm sm:text-base">
-            Are they slip‑resistant enough for hospital or restaurant work?
-          </summary>
-          <p class="mt-2 text-sm text-[var(--ink-muted)]">
-            The outsole is specifically chosen for traction on tile, concrete, and busy retail or restaurant floors. Customers in nursing, retail, and food service consistently call out the grip as a major benefit.
-          </p>
-        </details>
-        <details class="bg-white rounded-2xl p-4">
-          <summary class="font-semibold cursor-pointer text-sm sm:text-base">
-            Can I really return them if they don’t work for me?
-          </summary>
-          <p class="mt-2 text-sm text-[var(--ink-muted)]">
-            Yes. You get a 45‑day 100% money‑back guarantee. Wear them on real shifts and real walks, and if you don’t feel the difference, send them back for a full refund.
-          </p>
-        </details>
-        <details class="bg-white rounded-2xl p-4">
-          <summary class="font-semibold cursor-pointer text-sm sm:text-base">
-            Who are these best for?
-          </summary>
-          <p class="mt-2 text-sm text-[var(--ink-muted)]">
-            They’re ideal for anyone on their feet for long stretches: nurses, retail and restaurant workers, active retirees, and women over 50 who want to walk, travel, and keep up with family without paying for it in pain later.
-          </p>
-        </details>
-      </div>
-      <div class="mt-5 text-center">
-        <a
-          href="https://comfortorthowear.com/products/midnight-black-ortho-stretch-cushion-shoes"
-          class="btn inline-flex items-center justify-center px-8"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-psn-event="Brand Clicked"
-          data-psn-shop-id="335774">
-          Get 40% Off + 45-Day Trial
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
+  </div>
 </div>
+
+<!-- Bottom Spacing for Sticky -->
+<div style="height:100px;"></div>
+
+<!-- Custom Tracking -->
+<script>
+  // Helper: wait for Vercel Analytics to load
+  function waitForVa(callback, maxAttempts = 20) {
+    let attempts = 0;
+    const check = () => {
+      if (window.va && typeof window.va === 'function') {
+        callback();
+      } else if (attempts < maxAttempts) {
+        attempts++;
+        setTimeout(check, 100);
+      } else {
+        console.warn('Vercel Analytics not loaded');
+      }
+    };
+    check();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    waitForVa(function() {
+      
+      // TRACK LINK CLICKS
+      document.querySelectorAll('a[href*="comfortorthowear.com"]').forEach(link => {
+        link.addEventListener('click', function() {
+          window.va('event', {
+            name: 'Link Clicked',
+            url: this.href,
+            text: this.textContent.trim(),
+            position: this.closest('[data-track-view]')?.dataset.trackView || 'sticky'
+          });
+        });
+      });
+
+      // TRACK SECTION VIEWS
+      const sections = document.querySelectorAll('[data-track-view]');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const section = entry.target;
+            window.va('event', {
+              name: 'Section Viewed',
+              section: section.dataset.trackView,
+              shopId: section.dataset.psShopId || null
+            });
+            observer.unobserve(section);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      sections.forEach(section => observer.observe(section));
+    });
+  });
+</script>
 
 </body>
 </html>
