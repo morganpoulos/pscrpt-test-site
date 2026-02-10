@@ -407,7 +407,7 @@ Style: Clean Educational Listicle • DTC Best Practices • Single Sticky CTA
             rel="noopener noreferrer"
             data-ps-event="Brand Clicked"
             data-ps-shop-id="335774">
-            Shop Now
+            Shop Now with 40% Off
           </a>
         </div>
       </div>
@@ -580,7 +580,7 @@ Style: Clean Educational Listicle • DTC Best Practices • Single Sticky CTA
       data-ps-event="Brand Clicked"
       data-ps-shop-id="335774"
       style="padding:.875rem 1.5rem;font-size:.85rem;">
-      Shop Now
+      Shop Now with 40% Off
     </a>
     <div class="flex justify-center gap-2 mt-2 text-xs" style="color:var(--ink-muted);">
       <span>🚚 Free Shipping $50+</span>
@@ -595,36 +595,56 @@ Style: Clean Educational Listicle • DTC Best Practices • Single Sticky CTA
 
 <!-- Custom Tracking -->
 <script>
+  // Helper: wait for Vercel Analytics to load
+  function waitForVa(callback, maxAttempts = 20) {
+    let attempts = 0;
+    const check = () => {
+      if (window.va && typeof window.va === 'function') {
+        callback();
+      } else if (attempts < maxAttempts) {
+        attempts++;
+        setTimeout(check, 100);
+      } else {
+        console.warn('Vercel Analytics not loaded');
+      }
+    };
+    check();
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
-    
-    // TRACK LINK CLICKS
-    document.querySelectorAll('a[href*="comfortorthowear.com"]').forEach(link => {
-      link.addEventListener('click', function() {
-        window.va?.track('Link Clicked', {
-          url: this.href,
-          text: this.textContent.trim(),
-          position: this.closest('[data-track-view]')?.dataset.trackView || 'sticky'
+    waitForVa(function() {
+      
+      // TRACK LINK CLICKS
+      document.querySelectorAll('a[href*="comfortorthowear.com"]').forEach(link => {
+        link.addEventListener('click', function() {
+          window.va('event', {
+            name: 'Link Clicked',
+            url: this.href,
+            text: this.textContent.trim(),
+            position: this.closest('[data-track-view]')?.dataset.trackView || 'sticky'
+          });
         });
       });
+
+      // TRACK SECTION VIEWS
+      const sections = document.querySelectorAll('[data-track-view]');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const section = entry.target;
+            window.va('event', {
+              name: 'Section Viewed',
+              section: section.dataset.trackView,
+              shopId: section.dataset.psShopId || null
+            });
+            observer.unobserve(section);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      sections.forEach(section => observer.observe(section));
     });
-
-    // TRACK SECTION VIEWS
-    const sections = document.querySelectorAll('[data-track-view]');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const section = entry.target;
-          window.va?.track('Section Viewed', {
-            section: section.dataset.trackView,
-            shopId: section.dataset.psShopId || null
-          });
-          observer.unobserve(section);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    sections.forEach(section => observer.observe(section));
   });
 </script>
 
