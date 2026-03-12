@@ -1,0 +1,746 @@
+<!--
+Primary Angle: Spring Break Travel / Quiz to Best Sellers Collection
+Style: Quiz-to-Results (reveal.html pattern) • ComfortWear branding • Vercel Analytics
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Spring Break Travel Shoes | ComfortWear</title>
+  <meta name="description" content="Spring break travel means 10,000-20,000+ steps a day. Cobblestone streets, airport terminals, theme parks. Make sure your shoes are up for the job.">
+  <link rel="icon" href="https://comfortorthowear.com/cdn/shop/files/Ortho_2_32x32.png?v=1638918060" type="image/png">
+  <link rel="preconnect" href="https://comfortorthowear.com" crossorigin>
+  <link rel="preconnect" href="https://va.vercel-scripts.com" crossorigin>
+  <link rel="preload" as="image" href="https://comfortorthowear.com/cdn/shop/products/ortho-stretch-cushion-shoes-black-purple-563908.jpg?v=1746125075">
+  <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
+  <style>
+    :root{
+      --bg:#ffffff;--card:#ffffff;--muted:#5a6a7e;--text:#162950;
+      --stroke:rgba(22,41,80,.08);--stroke2:rgba(22,41,80,.14);
+      --brand:#1d376c;--brand-light:#2d56a8;--accent:#1d376c;--accent2:#0b4697;
+      --star:#FFD700;--success:#059669;--heart:#dc2626;
+      --shadow:0 4px 20px rgba(22,41,80,.07);--radius:18px;
+      --border:#e4e4e4;--paper:#f7f8fa;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:#ffffff;
+      color:var(--text);-webkit-tap-highlight-color:transparent;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    .wrap{max-width:420px;margin:0 auto;padding:44px 16px 100px}
+    .view{display:none}.view.active{display:block}
+
+    .logoBar{
+      position:fixed;top:0;left:0;right:0;z-index:40;
+      display:flex;align-items:center;justify-content:center;gap:6px;
+      padding:10px 16px;
+      background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);
+      font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--brand);
+    }
+    .logoBar img{height:28px;width:auto}
+
+    #viewStart.active{
+      display:flex;flex-direction:column;justify-content:center;
+      height:calc(100dvh - 44px);overflow:hidden;
+      background:var(--paper);
+    }
+    .startQuestion{
+      background:white;border-radius:var(--radius);padding:22px 16px;
+      border:1px solid var(--border);border-top:3px solid var(--brand);
+      box-shadow:0 4px 24px rgba(22,41,80,.10);
+    }
+    .startQLabel{
+      font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;
+      letter-spacing:.06em;text-align:center;margin-bottom:6px;
+    }
+    .startQText{
+      font-size:20px;font-weight:800;line-height:1.2;letter-spacing:-.02em;
+      margin-bottom:14px;text-align:center;
+    }
+    .startGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .startOpt{
+      appearance:none;border:0;cursor:pointer;
+      padding:16px 10px;border-radius:14px;
+      background:rgba(29,55,108,.04);border:1px solid rgba(29,55,108,.1);
+      display:flex;flex-direction:column;align-items:center;gap:6px;
+      font-size:13px;font-weight:700;color:var(--text);
+      transition:background .2s,border-color .2s,transform .15s,box-shadow .2s;
+      opacity:0;animation:optIn .4s ease forwards;
+    }
+    .startOpt:nth-child(1){animation-delay:.1s}
+    .startOpt:nth-child(2){animation-delay:.2s}
+    .startOpt:nth-child(3){animation-delay:.3s}
+    .startOpt:nth-child(4){animation-delay:.4s}
+    .startOpt:nth-child(5){animation-delay:.5s}
+    .startOptFull{grid-column:1/-1;flex-direction:row;justify-content:center}
+    @keyframes optIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .startOpt:hover{background:rgba(29,55,108,.08);border-color:rgba(29,55,108,.25);box-shadow:0 4px 16px rgba(0,50,120,.08)}
+    .startOpt:active{transform:scale(.96)}
+    .startOpt .optEmoji{font-size:24px}
+    .startContext{text-align:center;margin-top:18px;padding-top:16px;border-top:1px solid var(--stroke)}
+    .startContext h1{font-size:13px;font-weight:700;line-height:1.3;letter-spacing:-.01em;margin-bottom:4px;color:var(--text)}
+
+    @media(min-height:700px){
+      .startQuestion{padding:28px 20px}
+      .startQText{font-size:22px;margin-bottom:18px}
+      .startGrid{gap:10px}
+      .startOpt{padding:22px 14px;gap:8px;font-size:14px}
+      .startOpt .optEmoji{font-size:28px}
+      .startContext{margin-top:22px;padding-top:18px}
+      .startContext h1{font-size:14px}
+    }
+
+    .resultsIntro{
+      text-align:center;margin-bottom:20px;
+      background:var(--paper);
+      border:1px solid var(--border);border-radius:16px;padding:28px 22px 24px;
+    }
+    .resultsIntro h2{font-size:24px;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:8px}
+    .resultsIntro .introSub{font-size:13.5px;font-weight:700;color:var(--brand);margin-bottom:14px;letter-spacing:-.01em}
+    .resultsIntro p{font-size:14px;line-height:1.55;color:var(--muted);text-align:left;margin:0}
+
+    .productCard{
+      background:white;border:2px solid var(--brand);
+      border-radius:var(--radius);overflow:hidden;
+      box-shadow:0 0 30px rgba(29,55,108,.1),var(--shadow);
+    }
+    .topBanner{
+      background:linear-gradient(90deg,var(--brand),var(--brand-light));
+      padding:10px;text-align:center;font-size:12px;font-weight:800;
+      letter-spacing:.06em;text-transform:uppercase;color:white;
+    }
+    .productImg{position:relative;width:100%;overflow:hidden;display:block}
+    .productImg img{width:100%;height:auto;display:block}
+    .productBody{padding:16px;display:flex;flex-direction:column;gap:12px}
+    .productRating{display:flex;align-items:center;gap:5px}
+    .productStars{color:var(--star);font-size:14px;letter-spacing:-1px}
+    .productScore{font-weight:700;font-size:13px}
+    .productCount{font-size:12px;color:var(--muted)}
+    .productName{font-size:20px;font-weight:800;letter-spacing:-.01em}
+    .productPricing{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+    .priceOld{font-size:16px;font-weight:600;color:var(--muted);text-decoration:line-through}
+    .priceNew{font-size:22px;font-weight:900;color:#DA2F0C;letter-spacing:-.02em}
+    .priceSave{font-size:12px;font-weight:700;color:#fff;background:#DA2F0C;padding:3px 8px;border-radius:6px}
+    .productBrand{font-size:13px;color:var(--muted)}
+    .productHook{font-size:14px;line-height:1.5;color:var(--muted)}
+    .productFeatures{list-style:none;display:flex;flex-direction:column;gap:6px}
+    .productFeatures li{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.35;color:var(--text)}
+    .productFeatures .ck{color:var(--success);font-weight:700;flex-shrink:0;font-size:14px}
+    .trustChips{display:flex;flex-wrap:wrap;gap:8px}
+    .trustChip{
+      display:inline-flex;align-items:center;gap:4px;
+      padding:5px 10px;border-radius:999px;
+      background:rgba(29,55,108,.06);border:1px solid rgba(29,55,108,.12);
+      font-size:11px;font-weight:700;color:var(--text);
+    }
+
+    .whySection{
+      margin-top:20px;padding:20px;border-radius:var(--radius);
+      background:white;border:1px solid var(--stroke);box-shadow:var(--shadow);
+    }
+    .whySection h3{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:12px;text-align:center}
+    .whyList{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .whyList li{
+      display:flex;align-items:flex-start;gap:10px;
+      font-size:13px;line-height:1.45;color:var(--text);
+      padding:12px;border-radius:10px;background:var(--paper);border:1px solid var(--border);
+    }
+    .whyList .whyIcon{font-size:14px;flex-shrink:0;line-height:1;color:var(--success);font-weight:700}
+
+    .reviewsSection{margin-top:20px}
+    .reviewsSection h3{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:12px;text-align:center}
+    .reviewCard{
+      background:white;border:1px solid var(--stroke);border-radius:14px;
+      padding:16px;margin-bottom:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,.04);
+    }
+    .reviewStars{color:var(--star);font-size:14px;letter-spacing:-1px;margin-bottom:6px}
+    .reviewText{font-size:13px;line-height:1.5;color:var(--text);font-style:italic}
+    .reviewAttr{font-size:12px;font-weight:700;color:var(--muted);margin-top:8px}
+
+    .bottomCta{
+      text-align:center;margin-top:24px;
+      background:#fff;border:2px dashed rgba(0,0,0,.1);border-radius:14px;
+      padding:24px 20px;
+    }
+    .bottomCta h3{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+    .bottomCta p{font-size:13.5px;color:var(--muted);line-height:1.5;margin:0 0 16px}
+
+    .btn{
+      appearance:none;border:0;cursor:pointer;font-weight:800;font-size:15px;
+      letter-spacing:-.01em;padding:14px 16px;border-radius:14px;
+      background:var(--brand);color:white;width:100%;
+      text-align:center;text-decoration:none;display:inline-block;
+      box-shadow:0 8px 24px rgba(29,55,108,.3);
+      transition:transform .15s,box-shadow .15s;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(29,55,108,.35)}
+    .btn:active{transform:translateY(1px);box-shadow:0 4px 12px rgba(29,55,108,.2)}
+
+    .sticky{
+      position:fixed;left:0;right:0;bottom:0;
+      padding:12px 16px calc(16px + env(safe-area-inset-bottom));
+      background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.92) 28%,rgba(255,255,255,.98));
+      display:none;visibility:hidden;justify-content:center;z-index:50;
+    }
+    .sticky.show{display:flex;visibility:visible}
+    .stickyInner{max-width:420px;width:100%}
+    .sticky .btn{border-radius:16px;padding:14px;font-size:15px}
+    .stickyMeta{
+      display:flex;justify-content:center;gap:8px;margin-top:6px;
+      font-size:11px;font-weight:600;color:var(--muted);
+    }
+
+    .compareSection{
+      margin-top:20px;padding:20px;border-radius:var(--radius);
+      background:white;border:1px solid var(--stroke);box-shadow:var(--shadow);
+    }
+    .compareSection h3{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px;text-align:center}
+    .compareTable{width:100%;border-collapse:collapse}
+    .compareTable th{
+      font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;
+      padding:8px 6px;text-align:center;color:var(--muted);
+    }
+    .compareTable th:first-child{text-align:left}
+    .compareTable th.cwHead{color:var(--brand)}
+    .compareTable td{
+      font-size:12.5px;padding:10px 6px;border-top:1px solid var(--border);
+      text-align:center;line-height:1.35;
+    }
+    .compareTable td:first-child{text-align:left;font-weight:700;font-size:12px;color:var(--text)}
+    .compareTable .cx{color:#d1d5db;font-size:15px}
+    .compareTable .cv{color:var(--success);font-size:15px;font-weight:700}
+
+    .faqSection{
+      margin-top:20px;padding:20px;border-radius:var(--radius);
+      background:white;border:1px solid var(--stroke);box-shadow:var(--shadow);
+    }
+    .faqSection h3{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px;text-align:center}
+    .faqItem{border-top:1px solid var(--border);padding:14px 0 0}
+    .faqItem:first-of-type{border-top:0;padding-top:0}
+    .faqQ{
+      font-size:13.5px;font-weight:700;color:var(--text);cursor:pointer;
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
+      padding:0 0 10px;appearance:none;border:0;background:none;width:100%;text-align:left;
+    }
+    .faqQ .faqToggle{
+      font-size:16px;color:var(--muted);flex-shrink:0;
+      transition:transform .2s;
+    }
+    .faqA{
+      font-size:13px;line-height:1.55;color:var(--muted);
+      max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
+      padding:0 0 0;
+    }
+    .faqItem.open .faqA{max-height:200px;padding:0 0 14px}
+    .faqItem.open .faqToggle{transform:rotate(45deg)}
+
+    .urgencyCta{
+      text-align:center;margin-top:24px;
+      background:linear-gradient(135deg,var(--brand) 0%,var(--brand-light) 100%);
+      border:none;border-radius:var(--radius);padding:28px 22px;
+      box-shadow:0 8px 30px rgba(29,55,108,.25);
+    }
+    .urgencyCta h3{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;color:white}
+    .urgencyCta p{font-size:13.5px;color:rgba(255,255,255,.8);line-height:1.5;margin:0 0 16px}
+    .urgencyCta .btn{
+      background:white;color:var(--brand);
+      box-shadow:0 4px 16px rgba(0,0,0,.15);
+    }
+    .urgencyCta .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+    .urgencyCta .btn:active{transform:translateY(1px);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+
+    .featureImg{
+      margin-top:20px;border-radius:var(--radius);overflow:hidden;
+      border:1px solid var(--stroke);box-shadow:var(--shadow);
+    }
+    .featureImg img{width:100%;height:auto;display:block}
+
+    .lifestyleBreak{
+      margin-top:20px;border-radius:var(--radius);overflow:hidden;
+      position:relative;
+    }
+    .lifestyleBreak img{width:100%;height:auto;display:block}
+    .lifestyleBreak .lifestyleCaption{
+      position:absolute;bottom:0;left:0;right:0;
+      padding:20px 16px 16px;
+      background:linear-gradient(0deg,rgba(0,0,0,.6),transparent);
+      color:white;font-size:13px;font-weight:700;line-height:1.4;
+      text-align:center;
+    }
+
+    a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  </style>
+</head>
+<body data-shop-id="335774">
+
+  <div class="logoBar">
+    <img src="https://comfortorthowear.com/cdn/shop/files/comfort_ortho_trspt_300x300.png?v=1652404809" alt="ComfortWear" width="300" height="300">
+  </div>
+
+  <div class="wrap">
+
+    <!-- ═══ QUIZ ═══ -->
+    <section id="viewStart" class="view active" data-track-view="quiz" data-ps-shop-id="335774">
+      <div class="startQuestion">
+        <div class="startQLabel">One quick question</div>
+        <div class="startQText">What's bothering your feet?</div>
+        <div class="startGrid">
+          <button class="startOpt" data-answer="aching">
+            <span class="optEmoji">😣</span><span>They ache by the end of the day</span>
+          </button>
+          <button class="startOpt" data-answer="plantar">
+            <span class="optEmoji">🦶</span><span>Heel pain or plantar fasciitis</span>
+          </button>
+          <button class="startOpt" data-answer="bunions">
+            <span class="optEmoji">👣</span><span>Bunions or tight toe boxes</span>
+          </button>
+          <button class="startOpt" data-answer="allday">
+            <span class="optEmoji">⏰</span><span>I'm on my feet all day</span>
+          </button>
+          <button class="startOpt startOptFull" data-answer="allofit">
+            <span class="optEmoji">😅</span><span>All of the above</span>
+          </button>
+        </div>
+        <div class="startContext">
+          <h1>Tap your answer to see your match</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ RESULTS ═══ -->
+    <section id="viewResults" class="view" data-track-view="results" data-ps-shop-id="335774">
+
+      <div class="resultsIntro" data-track-view="results-intro" data-ps-shop-id="335774">
+        <h2 id="introH2"></h2>
+        <div class="introSub" id="introSub"></div>
+        <p id="introP1"></p>
+      </div>
+
+      <!-- Product Card -->
+      <div class="productCard" data-track-view="product" data-ps-shop-id="335774">
+        <div class="topBanner">EXPERT-RECOMMENDED · 12-HOUR COMFORT</div>
+        <a class="productImg" href="https://comfortorthowear.com/collections/best-sellers?utm_source=psplit&utm_medium=landing_page&utm_campaign=spring_break_travel" target="_blank" rel="noopener noreferrer" data-ps-event="Brand Clicked" data-ps-shop-id="335774" data-track-view="product-image">
+          <img src="https://comfortorthowear.com/cdn/shop/products/ortho-stretch-cushion-shoes-black-purple-563908.jpg?v=1746125075" alt="ComfortWear Ortho Stretch Cushion Shoes in Black Purple" width="800" height="800" loading="eager">
+        </a>
+        <div class="productBody">
+          <div class="productRating">
+            <span class="productStars">★★★★★</span>
+            <span class="productScore">4.8</span>
+            <span class="productCount">(1,400+ reviews)</span>
+          </div>
+          <div class="productName">ComfortWear Best Sellers</div>
+          <div class="productPricing">
+            <span class="priceOld">$99.00</span>
+            <span class="priceNew">$59.95</span>
+            <span class="priceSave">Save 40%</span>
+          </div>
+          <div class="productBrand">All-day comfort, real support, proven results</div>
+          <div class="productHook" id="productHook"></div>
+          <ul class="productFeatures">
+            <li><span class="ck">✓</span> ORTHO-WEAR Deep Heel Cushioning that absorbs shock and relieves pressure every step</li>
+            <li><span class="ck">✓</span> Anatomical Arch Support to reduce strain and keep feet aligned all day</li>
+            <li><span class="ck">✓</span> StretchFit Knit that adapts to your foot and eliminates pressure points</li>
+            <li><span class="ck">✓</span> Wide Toe Box with room for toes to sit naturally and reduce bunion pressure</li>
+          </ul>
+          <div class="trustChips">
+            <span class="trustChip">Free Shipping & Returns</span>
+            <span class="trustChip">45-Day Money Back</span>
+            <span class="trustChip">HSA/FSA Eligible</span>
+          </div>
+          <a class="btn" href="https://comfortorthowear.com/collections/best-sellers?utm_source=psplit&utm_medium=landing_page&utm_campaign=spring_break_travel" target="_blank" rel="noopener noreferrer" data-ps-event="Brand Clicked" data-ps-shop-id="335774">
+            Shop 40% Off Spring Sale
+          </a>
+        </div>
+      </div>
+
+      <!-- Features Breakdown -->
+      <div class="featureImg" data-track-view="features-image" data-ps-shop-id="335774">
+        <img src="https://comfortorthowear.com/cdn/shop/files/features-black.jpg?v=1756708282" alt="ComfortWear shoe features including arch support, heel cushioning, wide toe box, breathable knit" width="800" height="800" loading="lazy">
+      </div>
+
+      <!-- Reviews -->
+      <div class="reviewsSection" data-track-view="social-proof" data-ps-shop-id="335774">
+        <h3>Rated 4.8 Stars by 1,400+ Buyers</h3>
+        <div class="reviewCard">
+          <div class="reviewStars">★★★★★</div>
+          <div class="reviewText">"I have plantar fasciitis and these changed everything. The arch support is strong but not stiff. I wore them 12 hours straight with zero heel pain. First time in years."</div>
+          <div class="reviewAttr">Erina M., Verified Buyer</div>
+        </div>
+        <div class="reviewCard">
+          <div class="reviewStars">★★★★★</div>
+          <div class="reviewText">"My bunions made every shoe feel like torture. The wide toe box on these actually gives my feet room to breathe. I can walk all day now without wincing."</div>
+          <div class="reviewAttr">Lila B., Verified Buyer</div>
+        </div>
+        <div class="reviewCard">
+          <div class="reviewStars">★★★★★</div>
+          <div class="reviewText">"I'm a nurse doing 12-hour shifts on concrete. These are the first shoes where my feet don't ache after work. Took them on vacation too. 20,000 steps, no pain."</div>
+          <div class="reviewAttr">Jessica R., Verified Buyer</div>
+        </div>
+      </div>
+
+      <!-- Spring Break Urgency -->
+      <div class="urgencyCta" data-track-view="spring-break-cta" data-ps-shop-id="335774">
+        <h3>Get Ready for Spring Break</h3>
+        <p>Cobblestone streets, airport terminals, full days in the parks. Travel days hit 10,000 to 20,000+ steps. With the right shoes, every one of those steps feels great.</p>
+        <a class="btn" href="https://comfortorthowear.com/collections/best-sellers?utm_source=psplit&utm_medium=landing_page&utm_campaign=spring_break_travel" target="_blank" rel="noopener noreferrer" data-ps-event="Brand Clicked" data-ps-shop-id="335774">
+          Shop 40% Off Spring Sale →
+        </a>
+      </div>
+
+      <!-- Why This Shoe Section -->
+      <div class="whySection" id="whySection" data-track-view="why-this-shoe" data-ps-shop-id="335774">
+        <h3 id="whyTitle"></h3>
+        <ul class="whyList" id="whyList"></ul>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="compareSection" data-track-view="comparison" data-ps-shop-id="335774">
+        <h3>See the Difference</h3>
+        <table class="compareTable">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Regular Shoes</th>
+              <th class="cwHead">ComfortWear</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Arch Support</td>
+              <td><span class="cx">✗</span></td>
+              <td><span class="cv">✓</span></td>
+            </tr>
+            <tr>
+              <td>Heel Cushioning</td>
+              <td><span class="cx">✗</span></td>
+              <td><span class="cv">✓</span></td>
+            </tr>
+            <tr>
+              <td>Wide Toe Box</td>
+              <td><span class="cx">✗</span></td>
+              <td><span class="cv">✓</span></td>
+            </tr>
+            <tr>
+              <td>Breathable Material</td>
+              <td><span class="cx">✗</span></td>
+              <td><span class="cv">✓</span></td>
+            </tr>
+            <tr>
+              <td>Impact-Absorbing Sole</td>
+              <td><span class="cx">✗</span></td>
+              <td><span class="cv">✓</span></td>
+            </tr>
+            <tr>
+              <td>12-Hour Comfort</td>
+              <td><span class="cx">✗</span></td>
+              <td><span class="cv">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Wide Toe Box Detail -->
+      <div class="featureImg" data-track-view="wide-toebox" data-ps-shop-id="335774">
+        <img src="https://comfortorthowear.com/cdn/shop/files/widetoe-img.png?v=1769779141" alt="ComfortWear wide toe box design with room for toes to spread naturally" width="800" height="800" loading="lazy">
+      </div>
+
+      <!-- Lifestyle Image -->
+      <div class="lifestyleBreak" data-track-view="lifestyle" data-ps-shop-id="335774">
+        <img src="https://comfortorthowear.com/cdn/shop/files/A-fashionable-shot-of-a-mom-walking-through-a-park-with-her-stroller.jpg?v=1736672482" alt="Woman walking comfortably outdoors in ComfortWear shoes" width="800" height="800" loading="lazy">
+        <div class="lifestyleCaption">All-day comfort. Wherever life takes you.</div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faqSection" data-track-view="faq" data-ps-shop-id="335774">
+        <h3>Common Questions</h3>
+        <div class="faqItem open">
+          <button class="faqQ" aria-expanded="true">How do I find the right size?<span class="faqToggle">+</span></button>
+          <div class="faqA">They run true to size. The StretchFit knit is forgiving and adapts to your foot shape, so if you're between sizes, your normal size works great. There's also a 45-day trial if you need to exchange.</div>
+        </div>
+        <div class="faqItem">
+          <button class="faqQ" aria-expanded="false">How fast is shipping?<span class="faqToggle">+</span></button>
+          <div class="faqA">Orders typically ship within 1 to 3 business days. Free shipping on orders over $50, with free returns on every order.</div>
+        </div>
+        <div class="faqItem">
+          <button class="faqQ" aria-expanded="false">What if they don't work for me?<span class="faqToggle">+</span></button>
+          <div class="faqA">You have a full 45 days to try them out. If you're not completely happy, return them for a full refund. No questions asked, free returns included.</div>
+        </div>
+        <div class="faqItem">
+          <button class="faqQ" aria-expanded="false">Can I use HSA/FSA to pay?<span class="faqToggle">+</span></button>
+          <div class="faqA">Yes! ComfortWear shoes are HSA/FSA eligible, so you can use your pre-tax health dollars on shoes that actually support your feet.</div>
+        </div>
+        <div class="faqItem">
+          <button class="faqQ" aria-expanded="false">Will these help with my specific condition?<span class="faqToggle">+</span></button>
+          <div class="faqA">ComfortWear shoes are designed to help with general foot pain, plantar fasciitis, bunion pressure, and all-day fatigue. Thousands of customers with these conditions have found relief. The 45-day trial lets you see for yourself risk-free.</div>
+        </div>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="bottomCta" data-track-view="final-cta" data-ps-shop-id="335774" style="border-style:solid;border-color:var(--stroke)">
+        <h3>Not Sure Yet? No Risk.</h3>
+        <p>Free shipping, free returns, and a 45-day money back guarantee. If you don't love them, send them back.</p>
+        <a class="btn" href="https://comfortorthowear.com/collections/best-sellers?utm_source=psplit&utm_medium=landing_page&utm_campaign=spring_break_travel" target="_blank" rel="noopener noreferrer" data-ps-event="Brand Clicked" data-ps-shop-id="335774">
+          Try Them Risk-Free →
+        </a>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- Sticky CTA -->
+  <div class="sticky" id="stickyCta" style="display:none">
+    <div class="stickyInner">
+      <a class="btn" href="https://comfortorthowear.com/collections/best-sellers?utm_source=psplit&utm_medium=landing_page&utm_campaign=spring_break_travel" target="_blank" rel="noopener noreferrer" data-ps-event="Brand Clicked" data-ps-shop-id="335774">
+        Shop 40% Off Spring Sale
+      </a>
+      <div class="stickyMeta">
+        <span>Free Shipping & Returns</span>
+        <span>·</span>
+        <span>45-Day Money Back</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Logic -->
+  <script>
+  (function(){
+    var A = {
+      aching: {
+        h2: 'Your Feet Don\'t Have to Hurt by the End of the Day.',
+        sub: 'The right cushioning and arch support change everything.',
+        p1: 'ComfortWear shoes are built with deep heel cushioning and anatomical arch support that absorb impact and keep your feet aligned all day. Stay on your feet longer and actually enjoy it.',
+        hook: 'Shock-absorbing heel cups soften every step. Targeted arch support keeps you aligned all day. StretchFit knit adapts to your foot and moves with you. 12+ hours of real comfort.',
+        whyTitle: 'How these keep your feet feeling great',
+        why: [
+          {icon: '✓', text: 'ORTHO-WEAR deep heel cushioning absorbs impact step after step. Stays supportive all day, even past 20,000 steps.'},
+          {icon: '✓', text: 'Anatomical arch support cradles your arch and keeps feet aligned, so you feel as good at the end of the day as you did at the start.'},
+          {icon: '✓', text: 'Padded, seamless interior feels soft against your skin. Smooth, all-day support with no rough seams.'}
+        ]
+      },
+      plantar: {
+        h2: 'Plantar Fasciitis Doesn\'t Have to Run Your Life.',
+        sub: 'The right support under your heel and arch changes everything.',
+        p1: 'ComfortWear shoes are designed with deep, shock-absorbing heel cups and targeted arch support that relieve the pressure points that trigger flare-ups. Get back to walking and standing without thinking about every step.',
+        hook: 'Deep heel cushioning protects the exact zone where flare-ups start. Targeted arch support cradles and lifts the tissue. Immediate comfort, right out of the box.',
+        whyTitle: 'How these help with plantar fasciitis',
+        why: [
+          {icon: '✓', text: 'Shock-absorbing heel cups cushion the exact impact zone that matters most. Comfort and relief from step one.'},
+          {icon: '✓', text: 'Targeted arch support cradles and lifts the arch, keeping everything aligned and supported throughout the day.'},
+          {icon: '✓', text: 'Comfortable right out of the box. The support is structural, so there\'s no break-in period. Just put them on and go.'}
+        ]
+      },
+      bunions: {
+        h2: 'Shoes That Actually Give Your Toes Room.',
+        sub: 'No more squeezing. No more pressure.',
+        p1: 'ComfortWear shoes feature a wide toe box that lets your toes sit naturally, plus StretchFit knit that contours to your foot shape instead of squeezing it. The pressure eases, and walking feels good again.',
+        hook: 'A roomy toe box that lets toes spread naturally and relax. StretchFit knit contours to your foot shape and adapts to swelling throughout the day. Comfort that moves with you.',
+        whyTitle: 'How these give your feet the room they need',
+        why: [
+          {icon: '✓', text: 'Wide toe box gives toes room to spread naturally. Comfort and relief for wide feet, bunions, and sensitive toes.'},
+          {icon: '✓', text: 'StretchFit knit gently contours around your foot. Soft, flexible material that adapts instead of pressing.'},
+          {icon: '✓', text: 'Padded, seamless interior keeps everything smooth. Soft cushioning against your skin all day.'}
+        ]
+      },
+      allday: {
+        h2: 'Built for People Who Never Get to Sit Down.',
+        sub: 'Hour 1 should feel the same as hour 12.',
+        p1: 'Nurses, teachers, retail workers, parents. When you\'re on your feet for 8, 10, 12+ hours, you need shoes that keep up. ComfortWear uses heel-to-toe impact absorption and arch support that maintain their structure all day.',
+        hook: 'Shock-reducing soles absorb impact across the entire foot. Anatomical arch support stays firm all day, not just the first few hours. Built for the people who never get to sit down.',
+        whyTitle: 'How these keep you comfortable all day',
+        why: [
+          {icon: '✓', text: 'ORTHO-WEAR cushioning maintains its structure through 12+ hour days. Consistent comfort from clock-in to clock-out.'},
+          {icon: '✓', text: 'Anatomical arch support keeps feet aligned hour after hour and supports your knees, hips, and lower back too.'},
+          {icon: '✓', text: 'Breathable StretchFit knit stays cool on long days and keeps feet fresh even on warm shifts.'}
+        ]
+      },
+      allofit: {
+        h2: 'You Don\'t Need Four Solutions. You Need One Good Shoe.',
+        sub: 'Arch support, heel cushioning, wide toe box, 12-hour comfort. All built in.',
+        p1: 'ComfortWear brings everything together in one design: deep heel cushioning for impact relief, anatomical arch support for alignment, a wide toe box for natural toe placement, and StretchFit knit that adapts to your foot all day.',
+        hook: 'Deep heel cups for cushioning. Arch support for alignment. A wide toe box for natural comfort. StretchFit knit that adapts as your feet change throughout the day. One shoe that genuinely does it all.',
+        whyTitle: 'How one shoe covers everything',
+        why: [
+          {icon: '✓', text: 'ORTHO-WEAR cushioning and shock-absorbing heel cups deliver all-day impact relief. Comfortable from your first step to your last.'},
+          {icon: '✓', text: 'Wide toe box gives your toes room to relax while StretchFit knit gently adapts to your foot shape all day long.'},
+          {icon: '✓', text: 'Built for 12+ hour days. The arch support, cushioning, and structure stay consistent from hour 1 through hour 12.'}
+        ]
+      }
+    };
+
+    function show(key){
+      var a = A[key];
+
+      document.getElementById('viewStart').classList.remove('active');
+      document.getElementById('viewResults').classList.add('active');
+
+      document.getElementById('introH2').textContent = a.h2;
+      document.getElementById('introSub').textContent = a.sub;
+      document.getElementById('introP1').textContent = a.p1;
+      document.getElementById('productHook').textContent = a.hook;
+      document.getElementById('whyTitle').textContent = a.whyTitle;
+
+      var whyList = document.getElementById('whyList');
+      whyList.innerHTML = '';
+      for(var i = 0; i < a.why.length; i++){
+        var li = document.createElement('li');
+        li.innerHTML = '<span class="whyIcon">' + a.why[i].icon + '</span> ' + a.why[i].text;
+        whyList.appendChild(li);
+      }
+
+      var st = document.getElementById('stickyCta');
+      st.style.display = '';
+      st.classList.add('show');
+
+      window.scrollTo({top: 0});
+    }
+
+    var btns = document.querySelectorAll('.startOpt');
+    for(var i = 0; i < btns.length; i++){
+      btns[i].addEventListener('click', function(){
+        show(this.getAttribute('data-answer'));
+      });
+    }
+
+  })();
+  </script>
+
+  <!-- FAQ Toggle -->
+  <script>
+  (function(){
+    var items = document.querySelectorAll('.faqQ');
+    for(var i = 0; i < items.length; i++){
+      items[i].addEventListener('click', function(){
+        var item = this.parentElement;
+        var isOpen = item.classList.contains('open');
+        item.classList.toggle('open');
+        this.setAttribute('aria-expanded', !isOpen);
+      });
+    }
+  })();
+  </script>
+
+  <!-- UTM Passthrough -->
+  <script>
+  (function(){
+    'use strict';
+    var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var EXTRA_KEYS = ['s-id'];
+
+    function applyUtmPassthrough(){
+      var pageParams = new URLSearchParams(window.location.search);
+      var incoming = {};
+      var hasIncoming = false;
+      UTM_KEYS.concat(EXTRA_KEYS).forEach(function(key){
+        var val = pageParams.get(key);
+        if(val){ incoming[key] = val; hasIncoming = true; }
+      });
+      if(!hasIncoming) return;
+
+      var links = document.querySelectorAll('a[href*="comfortorthowear.com"]');
+      for(var i = 0; i < links.length; i++){
+        try{
+          var url = new URL(links[i].href);
+          UTM_KEYS.forEach(function(key){ if(incoming[key]) url.searchParams.set(key, incoming[key]); });
+          EXTRA_KEYS.forEach(function(key){ if(incoming[key]) url.searchParams.set(key, incoming[key]); });
+          links[i].href = url.toString();
+        } catch(e){}
+      }
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', applyUtmPassthrough);
+    } else {
+      applyUtmPassthrough();
+    }
+  })();
+  </script>
+
+  <!-- Custom Tracking -->
+  <script>
+  (function(){
+    'use strict';
+
+    function waitForVa(callback, maxAttempts){
+      maxAttempts = maxAttempts || 20;
+      var attempts = 0;
+      var check = function(){
+        try{
+          if(window.va && typeof window.va === 'function'){ callback(); }
+          else if(attempts < maxAttempts){ attempts++; setTimeout(check, 100); }
+        } catch(e){}
+      };
+      check();
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', initTracking);
+    } else {
+      initTracking();
+    }
+
+    function initTracking(){
+      var params = new URLSearchParams(window.location.search);
+      var subscriberId = params.get('s-id') || null;
+
+      waitForVa(function(){
+        var links = document.querySelectorAll('a[href*="comfortorthowear.com"]');
+        for(var i = 0; i < links.length; i++){
+          links[i].addEventListener('click', function(){
+            try{
+              window.va('event', {
+                name: 'CTA Clicked',
+                subscriberId: subscriberId,
+                url: this.href,
+                text: this.textContent.trim(),
+                position: (this.closest('[data-track-view]') || {}).dataset ? this.closest('[data-track-view]').dataset.trackView : 'sticky'
+              });
+            } catch(e){}
+          });
+        }
+
+        var quizBtns = document.querySelectorAll('.startOpt');
+        for(var q = 0; q < quizBtns.length; q++){
+          quizBtns[q].addEventListener('click', function(){
+            try{
+              window.va('event', {
+                name: 'Quiz Answer',
+                subscriberId: subscriberId,
+                answer: this.getAttribute('data-answer'),
+                text: this.textContent.trim()
+              });
+            } catch(e){}
+          });
+        }
+
+        if('IntersectionObserver' in window){
+          var sections = document.querySelectorAll('[data-track-view]');
+          var observer = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+              if(entry.isIntersecting){
+                try{
+                  var section = entry.target;
+                  window.va('event', {
+                    name: 'Section Viewed',
+                    subscriberId: subscriberId,
+                    section: section.dataset.trackView,
+                    shopId: section.dataset.psShopId || null
+                  });
+                } catch(e){}
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {threshold: 0.5});
+          sections.forEach(function(section){ observer.observe(section); });
+        }
+      });
+    }
+  })();
+  </script>
+
+</body>
+</html>
